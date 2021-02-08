@@ -2,12 +2,14 @@ import { useState } from 'react';
 import Month from './Month';
 
 function App() {
-  const [month] = useState(new Date().getMonth());
+  const now = new Date();
+  const [year] = useState(now.getFullYear())
+  const [month] = useState(now.getMonth());
 
   return (
     <div className='app'>
       {/* month pagination buttons go here */}
-      <Month month={month}></Month>
+      <Month year={year} month={month}></Month>
     </div>
   );
 }
