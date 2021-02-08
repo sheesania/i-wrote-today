@@ -1,0 +1,67 @@
+/* 
+ * Based on https://codepen.io/KennySing/pen/rBDlJ
+ *
+ * License:
+ * Copyright (c) 2021 by Kenny Sing (https://codepen.io/KennySing/pen/rBDlJ)
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ *
+ */
+
+body { 
+  margin: 0; 
+}
+
+table { 
+  width: 100%; 
+  box-sizing: border-box; 
+  box-shadow: inset 0px 0px 0px 1px rgba(0,0,0,0.1); 
+  font-family: 'Ubuntu';
+  border-spacing: 0; 
+  background-color: #333333; 
+}
+
+th, td { 
+  border: 1px solid rgba(255,255,255,0.1); 
+  box-sizing: border-box; 
+}
+
+th { 
+  text-transform: uppercase; 
+  font-size:10px; 
+  font-weight:700; 
+  padding: 10px 0; 
+  color: rgba(255,255,255,0.5); 
+  background-color: #292929; 
+  letter-spacing: 1px; 
+}
+
+.day { 
+  width: 14.285%; 
+  transition: all 0.3s; 
+  font-size: 14px; 
+  color: rgba(255,255,255,0.6); 
+  font-weight: 400; 
+  font-size: 14px; 
+  padding: 1.5% 1.5% 5%; 
+  vertical-align: initial; 
+  padding: 1.5% 0 ; 
+  height: 75px; 
+}
+
+.day-disabled {
+  background-color: #4a4a4a;
+}
+
+.day-enabled:hover { 
+  background-color: rgba(0,0,0,0.1); 
+  cursor: pointer; 
+}
+
+.number {
+  margin-left: 10%;
+}

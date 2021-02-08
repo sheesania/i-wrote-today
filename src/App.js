@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Month from './Month';
+import './App.css';
 
 function App() {
   const now = new Date();

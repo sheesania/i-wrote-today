@@ -41,7 +41,22 @@ function Month(props) {
 
   return (
     <div className='month'>
-      {weeks.map((week, index) => <Week week={week} key={index}/>)}
+      <table>
+        <thead>
+          <tr>
+            <th>Sun</th>
+            <th>Mon</th>
+            <th>Tue</th>
+            <th>Wed</th>
+            <th>Thu</th>
+            <th>Fri</th>
+            <th>Sat</th>
+          </tr>
+        </thead>
+        <tbody>
+          {weeks.map((week, index) => <Week week={week} key={index}/>)}
+        </tbody>
+      </table>
     </div>
   );
 }

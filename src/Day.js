@@ -1,10 +1,12 @@
 function Day(props) {
-  const output = typeof props.day === 'undefined' ? '-' : props.day.getDate();
+  const isDayInCurrentMonth = typeof props.day !== 'undefined';
+  const enabled = isDayInCurrentMonth ? 'day-enabled' : 'day-disabled';
+  const number = isDayInCurrentMonth ? props.day.getDate() : '';
 
   return (
-    <div className='day'>
-      {output}
-    </div>
+    <td className={`day ${enabled}`}>
+      <span className='number'>{number}</span>
+    </td>
   );
 }
 
