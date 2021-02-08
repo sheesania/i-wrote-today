@@ -57,9 +57,20 @@ th {
   background-color: #4a4a4a;
 }
 
-.day-enabled:hover { 
-  background-color: rgba(0,0,0,0.1); 
+.wrote-today {
+  background-color: #345920;
+}
+
+.day-enabled:hover {
   cursor: pointer; 
+}
+
+.didnt-write:hover {
+  background-color: rgba(0,0,0,0.1);
+}
+
+.wrote-today:hover {
+  background-color: #3d6925;
 }
 
 .number {
