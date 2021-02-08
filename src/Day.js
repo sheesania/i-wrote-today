@@ -33,7 +33,7 @@ function Day(props) {
 
     setWroteToday(newWroteToday);
   };
-  
+
   const enabled = dayInCurrentMonth ? 'day-enabled' : 'day-disabled';
   const number = dayInCurrentMonth ? day.getDate() : '';
 
