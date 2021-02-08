@@ -1,11 +1,41 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function Day(props) {
   const [wroteToday, setWroteToday] = useState(false);
+  const day = props.day;
+  const dayInCurrentMonth = typeof day !== 'undefined';
+  const localStorageKey = dayInCurrentMonth ? day.toDateString() : undefined;
 
-  const dayInCurrentMonth = typeof props.day !== 'undefined';
+  useEffect(() => {
+    if (!dayInCurrentMonth) {
+      return;
+    }
+
+    const localStorage = window.localStorage;
+    if (localStorage.getItem(localStorageKey) !== null) {
+      setWroteToday(true);
+    }
+  }, [dayInCurrentMonth, localStorageKey]);
+
+  const updateWroteToday = () => {
+    if (!dayInCurrentMonth) {
+      return;
+    }
+
+    const newWroteToday = !wroteToday;
+    const localStorage = window.localStorage;
+
+    if (newWroteToday) {
+      localStorage.setItem(localStorageKey, '');
+    } else {
+      localStorage.removeItem(localStorageKey);
+    }
+
+    setWroteToday(newWroteToday);
+  };
+  
   const enabled = dayInCurrentMonth ? 'day-enabled' : 'day-disabled';
-  const number = dayInCurrentMonth ? props.day.getDate() : '';
+  const number = dayInCurrentMonth ? day.getDate() : '';
 
   let wroteTodayClass;
   if (!dayInCurrentMonth) {
@@ -15,7 +45,9 @@ function Day(props) {
   }
 
   return (
-    <td onClick={() => setWroteToday(!wroteToday)} className={`day ${enabled} ${wroteTodayClass}`}>
+    <td
+      onClick={updateWroteToday}
+      className={`day ${enabled} ${wroteTodayClass}`}>
       <span className='number'>{number}</span>
     </td>
   );
