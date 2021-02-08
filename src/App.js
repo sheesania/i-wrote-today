@@ -1,7 +1,13 @@
+import { useState } from 'react';
+import Month from './Month';
+
 function App() {
+  const [month] = useState(new Date().getMonth());
+
   return (
-    <div>
-      hello
+    <div className='app'>
+      {/* month pagination buttons go here */}
+      <Month month={month}></Month>
     </div>
   );
 }
