@@ -14,13 +14,39 @@
 
 body { 
   margin: 0; 
+  background-color: #292929;
+  font-family: 'Ubuntu';
+}
+
+.app-header {
+  text-align: center;
+  color: rgba(255,255,255,0.5);
+}
+
+h1 {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 30px;
+  font-weight: 500;
+  margin: 20px 20px 5px 20px;
+}
+
+.month-buttons {
+  margin-top: 6px;
+  margin-bottom: 18px;
+}
+
+.month-button {
+  cursor: pointer;
+  font-size: 35px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 table { 
   width: 100%; 
   box-sizing: border-box; 
   box-shadow: inset 0px 0px 0px 1px rgba(0,0,0,0.1); 
-  font-family: 'Ubuntu';
   border-spacing: 0; 
   background-color: #333333; 
 }

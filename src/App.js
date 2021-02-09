@@ -31,9 +31,13 @@ function App() {
 
   return (
     <div className='app'>
-      <h1>{new Date(year, month).toLocaleDateString('default', {month: 'long', year: 'numeric'})}</h1>
-      <button onClick={goToPreviousMonth}>←</button>
-      <button onClick={goToNextMonth}>→</button>
+      <div className='app-header'>
+        <h1>{new Date(year, month).toLocaleDateString('default', { month: 'long', year: 'numeric' })}</h1>
+        <div className='month-buttons'>
+          <span className='month-button' onClick={goToPreviousMonth}>←</span>
+          <span className='month-button' onClick={goToNextMonth}>→</span>
+        </div>
+      </div>
       <Month year={year} month={month}></Month>
     </div>
   );
