@@ -39,6 +39,11 @@ function Day(props) {
   const enabled = dayInCurrentMonth ? 'day-enabled' : 'day-disabled';
   const number = dayInCurrentMonth ? day.getDate() : '';
 
+  let currentDay = '';
+  if (dayInCurrentMonth && (day.toDateString() === new Date().toDateString())) {
+    currentDay = 'current-day';
+  }
+
   let wroteTodayClass;
   if (!dayInCurrentMonth) {
     wroteTodayClass = '';
@@ -49,7 +54,7 @@ function Day(props) {
   return (
     <td
       onClick={updateWroteToday}
-      className={`day ${enabled} ${wroteTodayClass}`}>
+      className={`day ${enabled} ${wroteTodayClass} ${currentDay}`}>
       <span className='number'>{number}</span>
     </td>
   );
