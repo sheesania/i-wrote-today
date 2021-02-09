@@ -14,6 +14,8 @@ function Day(props) {
     const localStorage = window.localStorage;
     if (localStorage.getItem(localStorageKey) !== null) {
       setWroteToday(true);
+    } else {
+      setWroteToday(false);
     }
   }, [dayInCurrentMonth, localStorageKey]);
 
