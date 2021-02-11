@@ -29,7 +29,7 @@ function getDaysOfMonth(year, month) {
 }
 
 function getMonthKey(year, month) {
-  return `${month}${year}`;
+  return `${year}${month}`;
 }
 
 function getMonthInfo(year, month) {
