@@ -3,7 +3,7 @@ function Day(props) {
 
   const enabled = !!dayInfo ? 'day-enabled' : 'day-disabled';
   const isCurrentDay = dayInfo && dayInfo.isCurrentDay ? 'current-day' : '';
-  const number = dayInfo ? dayInfo.number : '';
+  const dayOfMonth = dayInfo ? dayInfo.dayOfMonth : '';
 
   let wroteToday;
   if (!dayInfo) {
@@ -16,14 +16,14 @@ function Day(props) {
     if (!dayInfo) {
       return;
     }
-    updateWrote(number, !dayInfo.wrote);
+    updateWrote(dayOfMonth, !dayInfo.wrote);
   };
 
   return (
     <td
       onClick={updateWroteToday}
       className={`day ${enabled} ${isCurrentDay} ${wroteToday}`}>
-      <span className='number'>{number}</span>
+      <span className='day-of-month'>{dayOfMonth}</span>
     </td>
   );
 }

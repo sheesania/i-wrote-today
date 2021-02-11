@@ -28,38 +28,38 @@ function getDaysOfMonth(year, month) {
   return days;
 }
 
-function getMonthKey(year, month) {
+function getWroteInfoKey(year, month) {
   return `${year}${month}`;
 }
 
-function getMonthInfo(year, month) {
-  const monthKey = getMonthKey(year, month);
-  const monthInStorage = window.localStorage.getItem(monthKey);
-  if (monthInStorage === null) {
+function getWroteInfo(year, month) {
+  const monthKey = getWroteInfoKey(year, month);
+  const wroteInfo = window.localStorage.getItem(monthKey);
+  if (wroteInfo === null) {
     return {};
   } else {
-    return JSON.parse(monthInStorage);
+    return JSON.parse(wroteInfo);
   }
 }
 
-function setMonthInfo(year, month, monthInfo) {
-  const monthKey = getMonthKey(year, month);
-  window.localStorage.setItem(monthKey, JSON.stringify(monthInfo));
+function setWroteInfo(year, month, wroteInfo) {
+  const monthKey = getWroteInfoKey(year, month);
+  window.localStorage.setItem(monthKey, JSON.stringify(wroteInfo));
 }
 
-function getDayInfo(year, month, days) {
-  const monthInfo = getMonthInfo(year, month);
+function getDayInfo(year, month, daysOfMonth) {
+  const wroteInfo = getWroteInfo(year, month);
 
   const currentDay = new Date().toDateString();
-  const dayInfo = days.map(day => {
+  const dayInfo = daysOfMonth.map(day => {
     if (!day) {
       return undefined;
     } else {
-      const number = day.getDate();
+      const dayOfMonth = day.getDate();
       return {
-        number: number,
+        dayOfMonth: dayOfMonth,
         isCurrentDay: currentDay === day.toDateString(),
-        wrote: !!monthInfo[number],
+        wrote: !!wroteInfo[dayOfMonth],
       };
     }
   });
@@ -80,21 +80,21 @@ function Month(props) {
   const [dayInfo, setDayInfo] = useState([]);
 
   useEffect(() => {
-    const days = getDaysOfMonth(year, month);
-    setDayInfo(getDayInfo(year, month, days));
+    const daysOfMonth = getDaysOfMonth(year, month);
+    setDayInfo(getDayInfo(year, month, daysOfMonth));
   }, [year, month])
 
-  const updateWrote = useCallback((number, wrote) => {
-    const monthInfo = getMonthInfo(year, month);
+  const updateWrote = useCallback((dayOfMonth, wrote) => {
+    const wroteInfo = getWroteInfo(year, month);
     if (wrote) {
-      monthInfo[number] = true;
+      wroteInfo[dayOfMonth] = true;
     } else {
-      delete monthInfo[number];
+      delete wroteInfo[dayOfMonth];
     }
-    setMonthInfo(year, month, monthInfo);
+    setWroteInfo(year, month, wroteInfo);
 
     setDayInfo(dayInfo.map(dayInfo => {
-      if (dayInfo && dayInfo.number === number) {
+      if (dayInfo && dayInfo.dayOfMonth === dayOfMonth) {
         return { ...dayInfo, wrote: wrote };
       } else {
         return dayInfo;
