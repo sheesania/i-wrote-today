@@ -86,7 +86,11 @@ function Month(props) {
 
   const updateWrote = useCallback((number, wrote) => {
     const monthInfo = getMonthInfo(year, month);
-    monthInfo[number] = wrote;
+    if (wrote) {
+      monthInfo[number] = true;
+    } else {
+      delete monthInfo[number];
+    }
     setMonthInfo(year, month, monthInfo);
 
     setDayInfo(dayInfo.map(dayInfo => {
