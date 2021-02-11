@@ -1,55 +1,23 @@
-import { useEffect, useState } from 'react';
-
 function Day(props) {
-  const [wroteToday, setWroteToday] = useState(false);
-  const day = props.day;
-  const dayInCurrentMonth = typeof day !== 'undefined';
-  const localStorageKey = dayInCurrentMonth ? day.toDateString() : undefined;
+  const { dayInfo, updateWrote } = props;
 
-  useEffect(() => {
-    if (!dayInCurrentMonth) {
-      return;
-    }
-
-    const localStorage = window.localStorage;
-    if (localStorage.getItem(localStorageKey) !== null) {
-      setWroteToday(true);
-    } else {
-      setWroteToday(false);
-    }
-  }, [dayInCurrentMonth, localStorageKey]);
-
-  const updateWroteToday = () => {
-    if (!dayInCurrentMonth) {
-      return;
-    }
-
-    const newWroteToday = !wroteToday;
-    const localStorage = window.localStorage;
-
-    if (newWroteToday) {
-      localStorage.setItem(localStorageKey, '');
-    } else {
-      localStorage.removeItem(localStorageKey);
-    }
-
-    setWroteToday(newWroteToday);
-  };
-
-  const enabled = dayInCurrentMonth ? 'day-enabled' : 'day-disabled';
-  const number = dayInCurrentMonth ? day.getDate() : '';
-
-  let currentDay = '';
-  if (dayInCurrentMonth && (day.toDateString() === new Date().toDateString())) {
-    currentDay = 'current-day';
-  }
+  const enabled = !!dayInfo ? 'day-enabled' : 'day-disabled';
+  const currentDay = dayInfo && dayInfo.isCurrentDay ? 'current-day' : '';
+  const number = dayInfo ? dayInfo.number : '';
 
   let wroteTodayClass;
-  if (!dayInCurrentMonth) {
+  if (!dayInfo) {
     wroteTodayClass = '';
   } else {
-    wroteTodayClass = wroteToday ? 'wrote-today' : 'didnt-write';
+    wroteTodayClass = dayInfo.wrote ? 'wrote-today' : 'didnt-write';
   }
+
+  const updateWroteToday = () => {
+    if (!dayInfo) {
+      return;
+    }
+    updateWrote(number, !dayInfo.wrote);
+  };
 
   return (
     <td

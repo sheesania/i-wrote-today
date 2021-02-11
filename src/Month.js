@@ -1,3 +1,4 @@
+import { useCallback, useEffect, useState } from 'react';
 import Week from './Week';
 
 function getDaysOfMonth(year, month) {
@@ -27,6 +28,45 @@ function getDaysOfMonth(year, month) {
   return days;
 }
 
+function getMonthKey(year, month) {
+  return `${month}${year}`;
+}
+
+function getMonthInfo(year, month) {
+  const monthKey = getMonthKey(year, month);
+  const monthInStorage = window.localStorage.getItem(monthKey);
+  if (monthInStorage === null) {
+    return {};
+  } else {
+    return JSON.parse(monthInStorage);
+  }
+}
+
+function setMonthInfo(year, month, monthInfo) {
+  const monthKey = getMonthKey(year, month);
+  window.localStorage.setItem(monthKey, JSON.stringify(monthInfo));
+}
+
+function getDayInfo(year, month, days) {
+  const monthInfo = getMonthInfo(year, month);
+
+  const currentDay = new Date().toDateString();
+  const dayInfo = days.map(day => {
+    if (!day) {
+      return undefined;
+    } else {
+      const number = day.getDate();
+      return {
+        number: number,
+        isCurrentDay: currentDay === day.toDateString(),
+        wrote: !!monthInfo[number],
+      };
+    }
+  });
+
+  return dayInfo;
+}
+
 function getWeeksFromDays(days) {
   const weeks = [];
   for (let i = 0; i < days.length; i += 7) {
@@ -36,8 +76,29 @@ function getWeeksFromDays(days) {
 }
 
 function Month(props) {
-  const days = getDaysOfMonth(props.year, props.month);
-  const weeks = getWeeksFromDays(days);
+  const { year, month } = props;
+  const [dayInfo, setDayInfo] = useState([]);
+
+  useEffect(() => {
+    const days = getDaysOfMonth(year, month);
+    setDayInfo(getDayInfo(year, month, days));
+  }, [year, month])
+
+  const updateWrote = useCallback((number, wrote) => {
+    const monthInfo = getMonthInfo(year, month);
+    monthInfo[number] = wrote;
+    setMonthInfo(year, month, monthInfo);
+
+    setDayInfo(dayInfo.map(dayInfo => {
+      if (dayInfo && dayInfo.number === number) {
+        return { ...dayInfo, wrote: wrote };
+      } else {
+        return dayInfo;
+      }
+    }));
+  }, [year, month, dayInfo, setDayInfo]);
+
+  const weeks = getWeeksFromDays(dayInfo);
 
   return (
     <div className='month'>
@@ -54,7 +115,7 @@ function Month(props) {
           </tr>
         </thead>
         <tbody>
-          {weeks.map((week, index) => <Week week={week} key={index}/>)}
+          {weeks.map((week, index) => <Week week={week} updateWrote={updateWrote} key={index}/>)}
         </tbody>
       </table>
     </div>
