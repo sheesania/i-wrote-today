@@ -1,0 +1,1 @@
+"[Cat](https://thenounproject.com/search/?q=cat&i=3556313)" icon by Gregor Cresnar from [the Noun Project](https://thenounproject.com/).
