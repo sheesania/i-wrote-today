@@ -2,14 +2,14 @@ function Day(props) {
   const { dayInfo, updateWrote } = props;
 
   const enabled = !!dayInfo ? 'day-enabled' : 'day-disabled';
-  const currentDay = dayInfo && dayInfo.isCurrentDay ? 'current-day' : '';
+  const isCurrentDay = dayInfo && dayInfo.isCurrentDay ? 'current-day' : '';
   const number = dayInfo ? dayInfo.number : '';
 
-  let wroteTodayClass;
+  let wroteToday;
   if (!dayInfo) {
-    wroteTodayClass = '';
+    wroteToday = '';
   } else {
-    wroteTodayClass = dayInfo.wrote ? 'wrote-today' : 'didnt-write';
+    wroteToday = dayInfo.wrote ? 'wrote-today' : 'didnt-write';
   }
 
   const updateWroteToday = () => {
@@ -22,7 +22,7 @@ function Day(props) {
   return (
     <td
       onClick={updateWroteToday}
-      className={`day ${enabled} ${wroteTodayClass} ${currentDay}`}>
+      className={`day ${enabled} ${isCurrentDay} ${wroteToday}`}>
       <span className='number'>{number}</span>
     </td>
   );
