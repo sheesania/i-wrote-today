@@ -29,10 +29,12 @@ function App() {
     setMonth(newMonth);
   };
 
+  const monthYearTitle = new Date(year, month).toLocaleDateString('default', { month: 'long', year: 'numeric' });
+
   return (
     <div className='app'>
       <div className='app-header'>
-        <h1>{new Date(year, month).toLocaleDateString('default', { month: 'long', year: 'numeric' })}</h1>
+        <h1>{monthYearTitle}</h1>
         <div className='month-buttons'>
           <span className='month-button' onClick={goToPreviousMonth}>←</span>
           <span className='month-button' onClick={goToNextMonth}>→</span>
