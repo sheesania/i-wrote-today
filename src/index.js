@@ -15,14 +15,14 @@ ReactDOM.render(
   <React.StrictMode>
     <Router>
       <Switch>
-        <Route path="/">
-          <App />
-        </Route>
         <Route path="/about">
           <About />
         </Route>
         <Route path="/import-export">
           <ImportExport />
+        </Route>
+        <Route path="/">
+          <App />
         </Route>
       </Switch>
       <Footer />
