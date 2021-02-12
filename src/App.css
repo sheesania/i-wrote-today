@@ -12,10 +12,8 @@
  *
  */
 
-body { 
-  margin: 0; 
-  background-color: #292929;
-  font-family: 'Ubuntu';
+body {
+  margin: 0;
 }
 
 .app-header {
