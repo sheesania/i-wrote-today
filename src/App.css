@@ -18,15 +18,6 @@ body {
 
 .app-header {
   text-align: center;
-  color: var(--primary-gray);
-}
-
-h1 {
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-size: 30px;
-  font-weight: 500;
-  margin: 20px 20px 5px 20px;
 }
 
 .month-buttons {

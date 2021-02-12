@@ -7,4 +7,34 @@
 body { 
   background-color: var(--deep-gray);
   font-family: 'Ubuntu';
+  color: var(--primary-gray);
+}
+
+h1 {
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 30px;
+  font-weight: 500;
+  margin: 20px 20px 5px 20px;
+}
+
+a {
+  color: var(--primary-gray);
+  transition: all 0.15s;
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--secondary-gray);
+}
+
+.page-content {
+  margin: 15px auto 30px auto;
+  max-width: 700px;
+  font-size: 16px;
+}
+
+.page-content a {
+  text-decoration: underline;
 }
