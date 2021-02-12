@@ -1,7 +1,7 @@
 .footer {
   text-align: center;
   font-size: 18px;
-  color: rgba(255,255,255,0.5);
+  color: var(--primary-gray);
 }
 
 .footer ul {
@@ -21,10 +21,11 @@
 }
 
 .footer a {
-  color: rgba(255,255,255,0.5);
+  color: var(--primary-gray);
+  transition: all 0.15s;
   text-decoration: none;
 }
 
 .footer a:hover {
-  color: #4a4a4a;
+  color: var(--secondary-gray);
 }

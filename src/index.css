@@ -1,4 +1,10 @@
+:root {
+  --primary-gray: rgba(255,255,255,0.5);
+  --secondary-gray: #4a4a4a;
+  --deep-gray: #292929;
+}
+
 body { 
-  background-color: #292929;
+  background-color: var(--deep-gray);
   font-family: 'Ubuntu';
 }

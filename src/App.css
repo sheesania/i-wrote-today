@@ -18,7 +18,7 @@ body {
 
 .app-header {
   text-align: center;
-  color: rgba(255,255,255,0.5);
+  color: var(--primary-gray);
 }
 
 h1 {
@@ -43,7 +43,7 @@ h1 {
 }
 
 .month-button:hover {
-  color: #4a4a4a;
+  color: var(--secondary-gray);
 }
 
 table { 
@@ -64,8 +64,8 @@ th {
   font-size:10px; 
   font-weight:700; 
   padding: 10px 0; 
-  color: rgba(255,255,255,0.5); 
-  background-color: #292929; 
+  color: var(--primary-gray);
+  background-color: var(--deep-gray);
   letter-spacing: 1px; 
 }
 
@@ -73,7 +73,7 @@ th {
   width: 14.285%; 
   transition: all 0.3s; 
   font-size: 14px; 
-  color: rgba(255,255,255,0.6); 
+  color: var(--primary-gray);
   font-weight: 400; 
   font-size: 14px; 
   padding: 1.5% 1.5% 5%; 
@@ -87,7 +87,7 @@ th {
 }
 
 .day-disabled {
-  background-color: #4a4a4a;
+  background-color: var(--secondary-gray);
 }
 
 .day-enabled:hover {
