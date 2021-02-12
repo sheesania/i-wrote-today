@@ -1,7 +1,6 @@
 textarea {
   width: 700px;
   height: 100px;
-  margin-bottom: 16px;
   background-color: var(--deep-gray);
   border: 3px solid var(--primary-gray);
   color: var(--primary-gray);
@@ -25,4 +24,8 @@ textarea {
   cursor: pointer;
   color: var(--secondary-gray);
   border: 1px solid var(--secondary-gray);
+}
+
+.successErrorMessage {
+  font-style: italic;
 }
