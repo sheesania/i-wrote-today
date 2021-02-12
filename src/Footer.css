@@ -1,0 +1,30 @@
+.footer {
+  text-align: center;
+  font-size: 18px;
+  color: rgba(255,255,255,0.5);
+}
+
+.footer ul {
+  padding: 0px;
+  margin-top: 25px;
+}
+
+.footer ul li { 
+  list-style: none; 
+  display: inline;
+}
+
+.footer ul li:not(:last-child):after { 
+  content: "\2022";
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.footer a {
+  color: rgba(255,255,255,0.5);
+  text-decoration: none;
+}
+
+.footer a:hover {
+  color: #4a4a4a;
+}
