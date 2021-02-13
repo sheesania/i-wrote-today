@@ -1,6 +1,6 @@
 import { useLocation, Link } from "react-router-dom";
 import { FaFileExport, FaHome, FaInfoCircle } from 'react-icons/fa';
-import './Footer.css';
+import './css/Footer.css';
 
 function Footer() {
   const location = useLocation();

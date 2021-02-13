@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Month from './Month';
-import './App.css';
+import './css/App.css';
 
 function getPreviousMonth(year, month) {
   const previousMonth = new Date(year, month - 1);

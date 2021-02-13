@@ -9,7 +9,7 @@ import About from './About';
 import App from './App';
 import Footer from './Footer';
 import ImportExport from './ImportExport';
-import './index.css';
+import './css/index.css';
 
 ReactDOM.render(
   <React.StrictMode>
